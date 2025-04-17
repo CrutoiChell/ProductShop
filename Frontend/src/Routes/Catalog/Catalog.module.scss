@@ -1,0 +1,47 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.catalogContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.filterSection {
+  flex: 1;
+  max-width: 300px;
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.cardsSection {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.catalogTitle {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .catalogContainer {
+    flex-direction: column;
+  }
+  
+  .filterSection {
+    max-width: none;
+    margin-bottom: 2rem;
+  }
+
+  .cardsSection {
+    flex: 1;
+  }
+}

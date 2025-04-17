@@ -1,0 +1,72 @@
+.ordersWrapper {
+  padding: 2rem;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ccff;
+}
+
+.statusSelect {
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: #111;
+  color: white;
+  border: 1px solid #00ccff;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #333;
+    text-align: left;
+  }
+
+  th {
+    background: #222;
+    color: #00ccff;
+  }
+
+  td {
+    background: #111;
+  }
+}
+
+.input {
+  padding: 0.5rem;
+  background: #000;
+  border: 1px solid #00ccff;
+  border-radius: 6px;
+  color: white;
+}
+
+.saveBtn,
+.editBtn {
+  background-color: #00ccff;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: #009ac1;
+  }
+}
+
+.loading {
+  font-size: 1.2rem;
+  color: #00ccff;
+}

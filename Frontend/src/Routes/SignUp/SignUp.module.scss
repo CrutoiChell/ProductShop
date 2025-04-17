@@ -1,0 +1,68 @@
+body {
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+.signUpSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #000);
+}
+
+.signUpForm {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.formTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #00ccff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+
+  &::placeholder {
+    color: #ccc;
+  }
+
+  &:focus {
+    background: #333;
+  }
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: #00ccff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #0088cc;
+    color: #fff;
+  }
+}

@@ -1,0 +1,202 @@
+body {
+  background: linear-gradient(90deg, #0d0d0d 0%, #1a1a1a 100%);
+  color: #fff;
+}
+
+.productDetail {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.imageSection {
+  width: 40%;
+  position: relative;
+  max-width: 400px;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  input[type="file"] {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  input[type="file"]:hover {
+    opacity: 1;
+  }
+}
+
+.infoSection {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00ccff;
+    margin-bottom: 1rem;
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+  .priceSection {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    align-items: baseline;
+
+    input[type="number"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      transition: border 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border: 1px solid #00ccff;
+    }
+
+    .oldPrice {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .currentPrice {
+      font-weight: bold;
+      color: #00ccff;
+    }
+  }
+
+  .metaInfo {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+  }
+
+  .textSection {
+    margin-top: 1.5rem;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #00ccff;
+      margin-bottom: 0.5rem;
+    }
+
+    p,
+    textarea {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+      transition: border 0.3s ease;
+    }
+
+    textarea:focus {
+      border: 1px solid #00ccff;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+      background-color: #00ccff;
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #009bbd;
+      transform: scale(1.05);
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 204, 255, 0.5);
+    }
+
+    .deleteBtn {
+      background-color: #ff0000;
+    }
+
+    .deleteBtn:hover {
+      background-color: #cc0000;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .productDetail {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageSection {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .infoSection {
+    width: 80%;
+  }
+}

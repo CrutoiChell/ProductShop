@@ -1,0 +1,108 @@
+.userDetail {
+  padding: 2rem;
+  background: #0a0a0a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #00ccff;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #00ccff;
+  margin-bottom: 1.5rem;
+}
+
+.userFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field {
+  font-size: 1rem;
+  padding: 0.2rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #00ccff;
+  border-radius: 8px;
+  background: #000;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input:focus {
+  border-color: white;
+}
+
+.button {
+  background: #00ccff;
+  color: black;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #00aacc;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.editBtn {
+  background-color: #00ccff;
+  color: #000;
+
+  &:hover {
+    background-color: #00aacc;
+  }
+}
+
+.deleteBtn {
+  background-color: #ff3b3b;
+  color: white;
+
+  &:hover {
+    background-color: #cc2f2f;
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  color: #00ccff;
+  font-size: 1.2rem;
+}
