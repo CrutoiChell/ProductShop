@@ -1,0 +1,320 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: radial-gradient(ellipse at top, #0a0a0a 0%, #000000 100%);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+  transition: all 0.4s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="30" r="0.5" fill="white" opacity="0.7"/><circle cx="50" cy="15" r="0.3" fill="white" opacity="0.5"/><circle cx="80" cy="40" r="0.4" fill="white" opacity="0.6"/><circle cx="10" cy="70" r="0.6" fill="white" opacity="0.8"/><circle cx="90" cy="85" r="0.7" fill="white" opacity="0.9"/></svg>');
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  
+  &.scrolled {
+    padding: 0.8rem 2rem;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.cosmicBorder {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 204, 255, 0.6), 
+    transparent);
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
+}
+
+.logo {
+  position: relative;
+  z-index: 10;
+  
+  a {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    letter-spacing: -0.5px;
+  }
+  
+  .gradient {
+    background: linear-gradient(45deg, #00ccff, #b300ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
+  }
+  
+  .neon {
+    color: #fff;
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #00ccff,
+      0 0 20px #00ccff;
+  }
+}
+
+.stars {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: twinkle 3s infinite;
+  
+  &:nth-child(1) { animation-delay: 0.2s; }
+  &:nth-child(2) { animation-delay: 0.8s; }
+  &:nth-child(3) { animation-delay: 1.4s; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #fff; }
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  
+  @media (min-width: 768px) {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
+}
+
+.link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ccff, #b300ff);
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    
+    &::before {
+      width: 100%;
+    }
+    
+    .icon {
+      transform: scale(1.2) rotate(10deg);
+      text-shadow: 0 0 10px #00ccff;
+    }
+  }
+}
+
+.icon {
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.authBlock {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.logout {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  &:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 50, 50, 0.3);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+.cta {
+  background: linear-gradient(45deg, #00ccff, #b300ff);
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+  
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+    color: #fff;
+  }
+}
+
+.loading {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #00ccff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.2rem;
+  }
+  
+  .logo a {
+    font-size: 1.8rem;
+  }
+  
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 27px;
+    cursor: pointer;
+    z-index: 101;
+    position: relative;
+    
+    span {
+      display: block;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+      transform-origin: center;
+    }
+    
+    &.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      background: #00ccff;
+    }
+    
+    &.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      background: #00ccff;
+    }
+  }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: radial-gradient(ellipse at top, #0a0a0a 0%, #000000 100%);
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-top: 1px solid rgba(0, 204, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 204, 255, 0.2);
+    
+    &.active {
+      display: flex;
+      animation: slideDown 0.4s ease-out;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .link, .logout {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .authBlock {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .burger {
+    display: none;
+  }
+}
