@@ -2,6 +2,9 @@ import { pool } from "../db.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+const profileColumns = 'id, name, surname, email, phone_number, address, role';
+const editableProfileFields = new Set(['name', 'surname', 'email', 'phone_number', 'password', 'address']);
+
 export let signUp = async (req, res) => {
     let { name, surname, email, phone_number, password, address } = req.body;
     let hash = await bcrypt.hash(password, 10);
@@ -37,7 +40,7 @@ export let signIn = async (req, res) => {
 
 export let fetch_profile_data = async (req, res) => {
     try {
-        let result = await pool.query('SELECT * FROM users_a WHERE id = $1', [req.user.userId]);
+        let result = await pool.query(`SELECT ${profileColumns} FROM users_a WHERE id = $1`, [req.user.userId]);
         res.status(200).json(result.rows[0] || null);
     } catch (err) {
         console.log(err);
@@ -50,6 +53,11 @@ export let edit_profile = async (req, res) => {
     const updates = req.body;
 
     try {
+        if (!updates || typeof updates !== 'object' || Array.isArray(updates) ||
+            Object.keys(updates).some(key => !editableProfileFields.has(key))) {
+            return res.status(400).json({ error: "Недопустимые поля профиля" });
+        }
+
         if (updates.name === null || updates.name === undefined ||
             updates.email === null || updates.email === undefined) {
             return res.status(400).json({ error: "Имя и email обязательны" });
@@ -60,7 +68,7 @@ export let edit_profile = async (req, res) => {
         let counter = 1;
 
         for (const [key, value] of Object.entries(updates)) {
-            if (value !== undefined && key !== "id") {
+            if (value !== undefined) {
                 if (key === "password") {
                     const hashed = await bcrypt.hash(value, 10);
                     queryParts.push(`password = $${counter}`);
@@ -82,7 +90,7 @@ export let edit_profile = async (req, res) => {
             UPDATE users_a 
             SET ${queryParts.join(", ")} 
             WHERE id = $${counter}
-            RETURNING *
+            RETURNING ${profileColumns}
         `;
 
         let result = await pool.query(queryText, values);
@@ -95,7 +103,7 @@ export let edit_profile = async (req, res) => {
 
 export let delete_profile = async (req, res) => {
     try {
-        let result = await pool.query('DELETE FROM users_a WHERE id = $1 RETURNING *', [req.user.userId]);
+        let result = await pool.query(`DELETE FROM users_a WHERE id = $1 RETURNING ${profileColumns}`, [req.user.userId]);
         res.status(200).json(result.rows[0] || null);
     } catch (err) {
         console.log(err);
